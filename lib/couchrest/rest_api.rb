@@ -147,7 +147,7 @@ module CouchRest
 
     # Parse the response provided.
     def parse_response(result, opts = {})
-      (opts.delete(:raw) || opts.delete(:head)) ? result : MultiJson.decode(result, opts.update(:max_nesting => false))
+      (opts.delete(:raw) || opts.delete(:head)) ? result : MultiJson.load(result, opts.update(:max_nesting => false))
     end
 
     # An array of all the options that should be passed through to restclient.

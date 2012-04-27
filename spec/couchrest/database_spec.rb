@@ -264,7 +264,7 @@ describe CouchRest::Database do
           ])
       rescue RestClient::RequestFailed => e
         # soon CouchDB will provide _which_ docs conflicted
-        MultiJson.decode(e.response.body)['error'].should == 'conflict'
+        MultiJson.load(e.response.body)['error'].should == 'conflict'
       end
     end
   end

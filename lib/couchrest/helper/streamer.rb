@@ -45,13 +45,13 @@ module CouchRest
     def parse_line line
       return nil unless line
       if /(\{.*\}),?/.match(line.chomp)
-        MultiJson.decode($1)
+        MultiJson.load($1)
       end
     end
 
     def parse_first first, last
       return nil unless first
-      header = MultiJson.decode(last ? first + last : first)
+      header = MultiJson.load(last ? first + last : first)
       header.delete("rows")
       header
     end
