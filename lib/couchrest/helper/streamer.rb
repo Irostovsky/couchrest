@@ -16,7 +16,7 @@ module CouchRest
     end
 
     def post(url, params = {}, &block)
-      open_pipe("curl #{default_curl_opts} -d \"#{escape_quotes(MultiJson.encode(params))}\" \"#{url}\"", &block)
+      open_pipe("curl #{default_curl_opts} -d \"#{escape_quotes(MultiJson.dump(params))}\" \"#{url}\"", &block)
     end
 
     protected
